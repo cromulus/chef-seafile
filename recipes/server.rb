@@ -21,10 +21,12 @@
 # Database setup
 node.set_unless['seafile']['server']['db_pass'] = secure_password
 
-#mysql user seafile
-#mysql_database 'ccnet-db'
-#mysql_database 'seafile-db'
-#mysql_database 'seahub-db'
+# if node['seafile']['server']['use_mysql']
+#   mysql user node.set_unless['seafile']['server']['db_user']
+#   mysql_database 'ccnet-db'
+#   mysql_database 'seafile-db'
+#   mysql_database 'seahub-db'
+# end
 
 include_recipe 'apt'
 %w(python2.7 python-setuptools python-simplejson python-imaging sqlite3 python-mysqldb).each do |pkg|
