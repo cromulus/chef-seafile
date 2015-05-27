@@ -27,7 +27,7 @@ node.set_unless['seafile']['server']['db_pass'] = secure_password
 #mysql_database 'seahub-db'
 
 include_recipe 'apt'
-%w(python2.7 python-setuptools python-simplejson python-imaging sqlite3).each do |pkg|
+%w(python2.7 python-setuptools python-simplejson python-imaging sqlite3 python-mysqldb).each do |pkg|
   package pkg
 end
 

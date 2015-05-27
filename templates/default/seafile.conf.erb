@@ -3,3 +3,13 @@ port=<%= node['seafile']['server']['seafile_port'] %>
 
 [httpserver]
 port=<%= node['seafile']['server']['seafile_http_port'] %>
+
+<% if node['seafile']['server']['use_mysql'] %>
+[database]
+ type=mysql
+ host=<%= node['seafile']['server']['db_host'] %>
+ user=<%= node['seafile']['server']['db_user'] %>
+ password=<%= node['seafile']['server']['db_password'] %>
+ db_name=<%= node['seafile']['server']['db_seafile-db'] %>
+ CONNECTION_CHARSET=utf8
+ <% end %>

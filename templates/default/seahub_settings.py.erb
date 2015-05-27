@@ -1,0 +1,23 @@
+SECRET_KEY = "MWm4nkCBjlV1qwq4ezjSpQ=="
+<% if node['seafile']['server']['use_mysql'] %>
+DATABASES = {
+     'default': {
+         'ENGINE': 'django.db.backends.mysql',
+         'USER' : '<%= node['seafile']['server']['db_user'] %>',
+         'PASSWORD' : '<%= node['seafile']['server']['db_password'] %>',
+         'NAME' : '<%= node['seafile']['server']['db_seahub-db'] %>',
+         'HOST' : '<%= node['seafile']['server']['db_host'] %>',
+         'OPTIONS': {
+             "init_command": "SET storage_engine=INNODB",
+         }
+     }
+ }
+<% end %>
+
+SERVE_STATIC = <%= node['seafile']['server']['serve_static'] %>
+<% if node['seafile']['server']['site_root'] !='/' %>
+MEDIA_URL = <%= node['seafile']['server']['media_url'] %>
+SITE_ROOT = <%= node['seafile']['server']['site_root'] %>
+<% end %>
+COMPRESS_URL = MEDIA_URL
+STATIC_URL = MEDIA_URL＋'assets/'

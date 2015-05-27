@@ -9,3 +9,13 @@ PORT = <%= node['seafile']['server']['ccnet_port'] %>
 
 [Client]
 PORT = 13418
+
+<% if node['seafile']['server']['use_mysql'] %>
+[Database]
+ ENGINE=mysql
+ HOST=<%= node['seafile']['server']['db_host'] %>
+ USER=<%= node['seafile']['server']['db_user'] %>
+ PASSWD=<%= node['seafile']['server']['db_password'] %>
+ DB=<%= node['seafile']['server']['db_database'] %>
+ CONNECTION_CHARSET=utf8
+<% end %>
