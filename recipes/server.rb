@@ -45,11 +45,26 @@ path = '/usr/local/seafile'
 ark 'seafile' do
   url url
 end
+template "/usr/local/seafile-data/seafile.conf" do
+  source "seafile.conf.erb"
+  mode '0440'
+  owner 'root'
+  group 'root'
+end
 
-directory node['seafile']['server']['conf_dir']
-template path  + '/../ccnet/ccnet.conf'
-template path  + '/../seafile.conf'
-template path  + '/../seahub_settings.py'
+template "/user/local/seahub_settings.py" do
+  source "seahub_settings.py.erb"
+  mode '0440'
+  owner 'root'
+  group 'root'
+end
+
+template "/user/local/ccnet/ccnet.conf" do
+  source "/ccnet/ccnet.conf.erb"
+  mode '0440'
+  owner 'root'
+  group 'root'
+end
 
 
 service 'seafile' do
